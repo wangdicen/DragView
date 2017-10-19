@@ -112,17 +112,16 @@
         self.transform = CGAffineTransformRotate(self.transform, theta);
     }
     if (_isScalable == YES) {
-        if(self.scaleX > 1.5f){
+        if(scale > 1.5f){
             self.transform = CGAffineTransformScale(self.transform, 1.5, 1.5);
+            return;
         }
         
-        else if (self.scaleX > 0.5f) {
-            self.transform = CGAffineTransformScale(self.transform, scale, scale);
-        }
-        else
-        {
+        else if (scale < 0.5f) {
             self.transform = CGAffineTransformScale(self.transform, 0.5f, 0.5f);
+            return;
         }
+        self.transform = CGAffineTransformScale(self.transform, scale, scale);
     }
 }
 
